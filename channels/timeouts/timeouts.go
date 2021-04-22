@@ -31,4 +31,22 @@ func main() {
 	case <-time.After(time.Second * 3):
 		fmt.Println("Error: Timeout")
 	}
+
+	// example in blocking
+	go addMessage(c1, "third message", 2)
+	select {
+
+	case res3 := <-c1:
+		fmt.Println("Third message received: ", res3)
+	default:
+		fmt.Println("Nothing to record. No activity.")
+	}
+
+	// closing
+
+	close(c1)
+	close(c2)
+
+	fmt.Println("Jobs closed...")
+
 }
