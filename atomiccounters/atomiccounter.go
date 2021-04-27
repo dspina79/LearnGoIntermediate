@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	var operations uint64
+	var counter1 uint64
+	var counter2 uint64
 
 	var wg sync.WaitGroup
 
@@ -16,12 +17,16 @@ func main() {
 
 		go func() {
 			for c := 0; c < 1000; c++ {
-				atomic.AddUint64(&operations, 2)
+				atomic.AddUint64(&counter1, 1)
+				if counter1%2 == 0 {
+					atomic.AddUint64(&counter2, 1)
+				}
 			}
 			wg.Done()
 		}()
 	}
 
 	wg.Wait()
-	fmt.Println("Operations Count", operations)
+	fmt.Println("Counter1 Count", counter1)
+	fmt.Println("Counter2 Count (Likely Blocked)", counter2)
 }
