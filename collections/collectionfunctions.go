@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func index(vs []string, item string) int {
 	for i, v := range vs {
 		if v == item {
@@ -53,6 +55,20 @@ func mapItems(vs []string, f func(string) string) []string {
 	return results
 }
 
-func main() {
+func isSmallString(s string) bool {
+	return len(s) < 5
+}
 
+func daddyO(s string) string {
+	return s + "-o"
+}
+
+func main() {
+	items := []string{"shell", "epic", "mine", "windows", "macintosh", "can"}
+	fmt.Println(items)
+	fmt.Println("The index of 'windows' is", index(items, "windows"))
+	fmt.Println("Does the collection include 'epic'? ", includes(items, "epic"))
+	fmt.Println("Are any of the strings small? ", any(items, isSmallString))
+	fmt.Println("Are all of the items small?", all(items, isSmallString))
+	fmt.Println("Daddy-o-ing the string:", mapItems(items, daddyO))
 }
