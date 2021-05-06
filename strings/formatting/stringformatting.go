@@ -30,7 +30,8 @@ func main() {
 
 	fmt.Printf("e %e\n", 12300000.00)
 	fmt.Printf("E %E\n", 12300000.00)
-
+	name := "Dean"
+	fmt.Printf("Hello, %s\n", name)
 	fmt.Fprintf(os.Stderr, "as %s\n", "error")
 
 }
