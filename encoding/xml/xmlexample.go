@@ -5,23 +5,23 @@ import (
 	"fmt"
 )
 
-type person struct {
+type Person struct {
 	XMLName   xml.Name
-	id        int
-	firstName string
-	lastName  string
-	hobbies   []string
+	Id        int
+	FirstName string
+	LastName  string
+	Hobbies   []string
 }
 
-func (p person) toString() string {
-	return p.firstName + " " + p.lastName
+func (p Person) toString() string {
+	return p.FirstName + " " + p.LastName
 }
 
 func main() {
-	p := person{id: 12, firstName: "Dean", lastName: "Anips"}
-	p.hobbies = []string{"reading", "writing"}
+	p := Person{Id: 12, FirstName: "Dean", LastName: "Anips"}
+	p.Hobbies = []string{"reading", "writing"}
 	fmt.Println(p.toString())
-	data, err := xml.Marshal(p)
+	data, err := xml.MarshalIndent(p, "", " ")
 	if err != nil {
 		fmt.Println(err)
 	}
