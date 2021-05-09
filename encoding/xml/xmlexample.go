@@ -18,10 +18,13 @@ func (p person) toString() string {
 }
 
 func main() {
-	p := &person{id: 12, firstName: "Dean", lastName: "Anips"}
+	p := person{id: 12, firstName: "Dean", lastName: "Anips"}
 	p.hobbies = []string{"reading", "writing"}
 	fmt.Println(p.toString())
-	data, _ := xml.MarshalIndent(p, " ", "  ")
+	data, err := xml.Marshal(p)
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Println(string(data))
 
 }
