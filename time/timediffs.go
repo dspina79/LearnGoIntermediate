@@ -33,4 +33,9 @@ func main() {
 	fmt.Println(d, " days")
 	fmt.Println(m, " months")
 	fmt.Println(y, " years")
+
+	// Unix epoch
+	secondsSinceUnix := time.Now().Unix()
+	fmt.Println("Seconds since the Unix epoch: ", secondsSinceUnix)
+	fmt.Println("Time now based on Unix epoch: ", time.Unix(secondsSinceUnix, 0))
 }
