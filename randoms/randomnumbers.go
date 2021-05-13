@@ -16,6 +16,11 @@ func main() {
 	pl(rand.Float64())
 	pl(rand.Float64())
 
+	pl("\nRandom Floats 0 - 100")
+	pl(rand.Float64() * 100.00)
+	pl(rand.Float64() * 100.00)
+	pl(rand.Float64() * 100.00)
+
 	pl("\nNew Source")
 	s1 := rand.NewSource(time.Now().UnixNano())
 	r1 := rand.New(s1)
@@ -23,5 +28,10 @@ func main() {
 	pl(r1.Intn(100))
 	pl(r1.Float64())
 	pl(r1.Float64())
+
+	pl("\nRandom Floats 0 - 100")
+	pl(r1.Float64() * 100.00)
+	pl(r1.Float64() * 100.00)
+	pl(r1.Float64() * 100.00)
 
 }
